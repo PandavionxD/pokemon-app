@@ -10,7 +10,13 @@ const Peticion = async (name: string): Promise<Poke> => {
   return data;
 };
 
-export default async function PokePage({ params }) {
+interface Props {
+  params: {
+    name: string;
+  };
+}
+
+export default async function PokePage({params}) {
   const { name } = params;
   const { species, name: namePokemon, moves } = await Peticion(name);
   const { url } = species;
@@ -43,21 +49,17 @@ export default async function PokePage({ params }) {
         </div>
       </div>
       <div className="w-full grid gap-4 ">
-        <div className="flex w-full gap-4 justify-evenly" >
-          <h2 className="text-3xl"  > Movimientos </h2>
+        <div className="flex w-full gap-4 justify-evenly">
+          <h2 className="text-3xl"> Movimientos </h2>
           <BackComponent />
         </div>
         <Separator />
-          <div className="flex flex-wrap" >
-            {
-              moves.map((item,id)=>(
-                <div key={id}>
-                {item.move.name} / 
-                </div>
-              ))
-            }
-          </div>
+        <div className="flex flex-wrap">
+          {moves.map((item, id) => (
+            <div key={id}>{item.move.name} /</div>
+          ))}
         </div>
+      </div>
     </div>
   );
 }

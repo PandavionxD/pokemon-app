@@ -19,13 +19,7 @@ import { ToastComponent } from "./ToastComponent";
 import Link from "next/link";
 import { Separator } from "./ui/separator";
 
-
-interface Props {
-  name: string;
-  id: number;
-}
-
-export const CardPoke = async ({ name, id }): Props => {
+export const CardPoke = async ({ name, id }) => {
   return (
     <Card className="w-[350px]">
       <CardHeader className="grid grid-cols-10 items-center">

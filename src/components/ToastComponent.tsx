@@ -5,7 +5,11 @@ import { Button } from "./ui/button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "./ui/tooltip";
 import {  toast } from "sonner";
 
-export const ToastComponent = ({name}:string) => {
+interface Props {
+  name: string
+}
+
+export const ToastComponent = ({name}:Props) => {
   return (
     <Tooltip>
     <TooltipTrigger asChild>
