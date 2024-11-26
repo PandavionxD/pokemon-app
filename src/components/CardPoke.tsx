@@ -8,7 +8,17 @@ import {
 } from "@/components/ui/card";
 import { Button } from "./ui/button";
 import Image from "next/image";
-import { Heart } from "lucide-react";
+
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "./ui/tooltip";
+import { ToastComponent } from "./ToastComponent";
+import Link from "next/link";
+import { Separator } from "./ui/separator";
+
 
 interface Props {
   name: string;
@@ -18,8 +28,9 @@ interface Props {
 export const CardPoke = async ({ name, id }): Props => {
   return (
     <Card className="w-[350px]">
-      <CardHeader className="grid grid-cols-6 ">
+      <CardHeader className="grid grid-cols-10 items-center">
         <CardDescription>{id + 1} </CardDescription>
+        <Separator orientation="vertical" />
         <CardTitle className="capitalize"> {name} </CardTitle>
       </CardHeader>
       <CardContent className="flex justify-center">
@@ -35,11 +46,22 @@ export const CardPoke = async ({ name, id }): Props => {
         />
       </CardContent>
       <CardFooter className="flex justify-between">
-        <Button variant={"destructive"} className="dark:bg-transparent border dark:hover:bg-[#1E293B]" >
-          <Heart className=" text-white dark:text-red-600  " />
-          Favorito
-        </Button>
-        <Button variant="outline">Ver más</Button>
+        <TooltipProvider delayDuration={300} skipDelayDuration={100}>
+          <ToastComponent name={name} />
+        </TooltipProvider>
+
+        <Link href={`/dashboard/${name}`}>
+          <TooltipProvider delayDuration={300} skipDelayDuration={100}>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="outline">Ver más</Button>
+              </TooltipTrigger>
+              <TooltipContent className="bg-white mt-1 text-black border dark:bg-[#020817] dark:text-white ">
+                <p>Ver ataques principales</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </Link>
       </CardFooter>
     </Card>
   );

@@ -6,8 +6,9 @@ export const Grid = async () => {
   const resp = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`);
   const data: DataPokemon = await resp.json();
   const { results } = data;
+
   return (
-    <div className="flex gap-6 justify-center flex-wrap ">
+    <div className="flex gap-6 justify-center flex-wrap">
       {results.map((item, id) => (
         <CardPoke name={item.name} id={id} key={id} />
       ))}
