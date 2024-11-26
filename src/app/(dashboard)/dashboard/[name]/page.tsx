@@ -1,7 +1,7 @@
 import { BackComponent } from "@/components/BackComponent";
 import { Title } from "@/components/Title";
 import { Separator } from "@/components/ui/separator";
-import { Poke } from "@/data";
+import { Poke } from "@/app/data/data";
 import Image from "next/image";
 
 const Peticion = async (name: string): Promise<Poke> => {

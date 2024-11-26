@@ -1,4 +1,4 @@
-import { DataPokemon } from "@/data";
+import { DataPokemon } from "@/app/data/data";
 import { CardPoke } from "./CardPoke";
 
 export const Grid = async () => {
